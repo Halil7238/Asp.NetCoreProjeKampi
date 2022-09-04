@@ -1,6 +1,8 @@
 ﻿using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoreDemo.Controllers
@@ -17,12 +19,28 @@ namespace CoreDemo.Controllers
         [HttpPost]
         public IActionResult Index(Writer writer)
         {
-            writer.WriterStatus = true;
-            writer.WriterAbout = "Deneme";
-            writer.WriterPassword = BCrypt.Net.BCrypt.HashPassword(writer.WriterPassword); //Şifre Hash(Gizleme)
-            wm.Add(writer);
+            WriterValidator wv = new WriterValidator();
+            ValidationResult results = wv.Validate(writer);
+            if (results.IsValid)
+            {
+                writer.WriterStatus = true;
+                writer.WriterAbout = "Deneme";
+                writer.WriterPassword = BCrypt.Net.BCrypt.HashPassword(writer.WriterPassword); //Şifre Hash(Gizleme)
+                wm.Add(writer);
+                return RedirectToAction("Index", "Blog");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
 
-            return RedirectToAction( "Index", "Blog");
+                }
+            }
+            return View();
+          
+
+          
         }
     }
 }
