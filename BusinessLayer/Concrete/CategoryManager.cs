@@ -34,6 +34,12 @@ namespace BusinessLayer.Concrete
             return _categoryDal.GetById(id);
         }
 
+        public List<Category> GetCategoryListWithBlog()
+        {
+            var category = _categoryDal.GetListWithBlog();
+            return category;
+        }
+
         public List<Category> GetList()
         {
             return _categoryDal.GetListAll();
