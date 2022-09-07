@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Abstract
 {
-    public interface IBlogDal :IGenericDal<Blog>
+    public interface INewsletterDal : IGenericDal<Newsletter>
     {
-        List<Blog> GetListWithCategory();
-        //List<Blog> GetListWithWriter();
     }
 }

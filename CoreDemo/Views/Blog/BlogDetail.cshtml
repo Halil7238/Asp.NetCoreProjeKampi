@@ -52,7 +52,7 @@
                 <div class="comment-top">
                     <h4>Yorumlar</h4>
                     @await Component.InvokeAsync("CommentListByBlog" , new {id= ViewBag.BlogId})
-             @*       @await Html.PartialAsync("~/Views/Comment/CommentListPartial.cshtml")*@
+                    @*       @await Html.PartialAsync("~/Views/Comment/CommentListPartial.cshtml")*@
                 </div>
                 @await Html.PartialAsync("~/Views/Comment/AddCommentPartial.cshtml")
             </div>
@@ -64,57 +64,10 @@
                     <div class="tech-btm">
                         <img src="~/CoreBlogTema/images/banner1.jpg" class="img-fluid" alt="">
                     </div>
-                    <div class="tech-btm">
-                        <h4>Sign up to our newsletter</h4>
-                        <p>Pellentesque dui, non felis. Maecenas male </p>
-                        <form action="#" method="post">
-                            <input type="email" placeholder="Email" required="">
-                            <input type="submit" value="Subscribe">
-                        </form>
-
-                    </div>
+                    @await Html.PartialAsync("~/Views/Newsletter/SubscribeMail.cshtml")
+                @*    @await Component.InvokeAsync("SubscribeMail")   Subscibe Alanını View Component Olarak Düzenlendi Ama Çalışmadı.*@
                     @await Component.InvokeAsync("CategoryListInBlogDetail")
-                    <div class="tech-btm">
-                        <h4>Yazarın Son Postları</h4>
-
-                        <div class="blog-grids row mb-3">
-                            <div class="col-md-5 blog-grid-left">
-                                <a href="single.html">
-                                    <img src="~/CoreBlogTema/images/1.jpg" class="img-fluid" alt="">
-                                </a>
-                            </div>
-                            <div class="col-md-7 blog-grid-right">
-
-                                <h5>
-                                    <a href="single.html">Pellentesque dui, non felis. Maecenas male non felis </a>
-                                </h5>
-                                <div class="sub-meta">
-                                    <span>
-                                        <i class="far fa-clock"></i> 20 Jan, 2018
-                                    </span>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="blog-grids row mb-3">
-                            <div class="col-md-5 blog-grid-left">
-                                <a href="single.html">
-                                    <img src="~/CoreBlogTema/images/6.jpg" class="img-fluid" alt="">
-                                </a>
-                            </div>
-                            <div class="col-md-7 blog-grid-right">
-                                <h5>
-                                    <a href="single.html">Pellentesque dui, non felis. Maecenas male non felis </a>
-                                </h5>
-                                <div class="sub-meta">
-                                    <span>
-                                        <i class="far fa-clock"></i> 20 Feb, 2018
-                                    </span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
+                    @await Component.InvokeAsync("BlogListWithWriterInBlogDetail")
                     <div class="single-gd my-5 tech-btm">
                         <h4>Our Progress</h4>
                         <div class="progress">
