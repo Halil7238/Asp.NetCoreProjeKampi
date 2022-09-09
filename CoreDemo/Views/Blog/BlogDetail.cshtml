@@ -54,7 +54,19 @@
                     @await Component.InvokeAsync("CommentListByBlog" , new {id= ViewBag.BlogId})
                     @*       @await Html.PartialAsync("~/Views/Comment/CommentListPartial.cshtml")*@
                 </div>
-                @await Html.PartialAsync("~/Views/Comment/AddCommentPartial.cshtml")
+                @*@await Html.PartialAsync("~/Views/Comment/AddCommentPartial.cshtml")*@@*action="/Comment/AddCommentPartial/" *@
+                <div class="comment-top">
+                    <h4>Yorum Yap</h4>
+                    <div class="comment-bottom">
+                        <form method="post">
+                            <input class="form-control" type="text" name="CommentUserName" placeholder="Ad Soyad" required="">
+                            <input class="form-control" type="text" name="CommentTitle" placeholder="Konu" required="">
+
+                            <textarea class="form-control" name="CommentContent" placeholder="Yorumunuz..." required=""></textarea>
+                            <button type="submit" class="btn btn-primary submit">Yorum Yap</button>
+                        </form>
+                    </div>
+                </div>
             </div>
 
             <!--//left-->
@@ -65,7 +77,15 @@
                         <img src="~/CoreBlogTema/images/banner1.jpg" class="img-fluid" alt="">
                     </div>
                     @await Html.PartialAsync("~/Views/Newsletter/SubscribeMail.cshtml")
-                @*    @await Component.InvokeAsync("SubscribeMail")   Subscibe Alanını View Component Olarak Düzenlendi Ama Çalışmadı.*@
+                    @* <div class="tech-btm">
+                    <h4>Mail Bültenimize Abone Olun.</h4>
+                    <p>Pellentesque dui, non felis. Maecenas male </p>*@
+                    @*  <form  method="post">
+                    <input type="email" placeholder="Email" required="" name="Mail">
+                    <input  type="submit" value="Subscribe">
+                    </form>
+                    </div>*@
+                    @*    @await Component.InvokeAsync("SubscribeMail")   Subscibe Alanını View Component Olarak Düzenlendi Ama Çalışmadı.*@
                     @await Component.InvokeAsync("CategoryListInBlogDetail")
                     @await Component.InvokeAsync("BlogListWithWriterInBlogDetail")
                     <div class="single-gd my-5 tech-btm">
@@ -116,3 +136,53 @@
     </div>
 </section>
 <!--//main-->
+@section Scripts {
+
+    <script>
+
+        $("#btnemail").click(function() {
+            console.log("kontrol")
+            let values = {
+                Mail: $("#form_email").val(),
+
+            }
+            if ($("#form_email").val().length == 0 ) {
+                alert("Mail bültenine abone olmak için Email alanı doldurulmalıdır!");
+                return false;
+            }
+
+
+            $.ajax({
+
+
+                type: "POST",
+                url: "/Newsletter/SubscribeMail",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: JSON.stringify(values),
+                success: function(response) {
+
+
+                    $("#myElem").show();
+                    setTimeout(function() { $("#myElem").hide(); }, 5000);
+
+
+
+                    $("#form_email").val("")
+
+
+
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+
+                }
+
+
+
+            });
+        })
+    </script>
+
+
+}
