@@ -30,7 +30,7 @@ namespace BusinessLayer.Concrete
 
         public List<Blog> GetBlogListWithCategory()
         {
-            var blog = _blogdal.GetListWithCategory();
+            var blog = _blogdal.GetListWithCategory().OrderByDescending(x => x.BlogCreadDate).ToList(); ;
             return blog;
         }
 
@@ -46,7 +46,7 @@ namespace BusinessLayer.Concrete
 
         public List<Blog> GetList()
         {
-            var blog = _blogdal.GetListAll();
+            var blog = _blogdal.GetListAll().OrderByDescending(x=>x.BlogCreadDate).ToList();
             return blog;
         }
 
@@ -57,8 +57,13 @@ namespace BusinessLayer.Concrete
 
         public List<Blog> GetBlogListWithWriter(int id)
         {
-            var blog = _blogdal.GetListAll(x=>x.WriterId==id);
+            var blog = _blogdal.GetListAll(x=>x.WriterId==id).OrderByDescending(x=> x.BlogCreadDate).Take(3).ToList();
             return blog;
+        }
+
+        public List<Blog> GetLast3BlogList()
+        {
+            return _blogdal.GetListAll().OrderByDescending(x=>x.BlogCreadDate).Take(3).ToList();
         }
     }
 }

@@ -1,16 +1,17 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
 namespace CoreDemo.Controllers
 {
+    [AllowAnonymous]
     public class BlogController : Controller
     {
         BlogManager bm = new BlogManager(new EfBlogRepository());
         CommentManager cm = new CommentManager(new EfCommentRepository());
-        NewsletterManager nm = new NewsletterManager(new EfNewsletterRepository());
         public IActionResult Index()
         {
             var values = bm.GetBlogListWithCategory();
@@ -25,14 +26,12 @@ namespace CoreDemo.Controllers
             return View(values);
         }
         [HttpPost]
-        public IActionResult BlogDetail(Comment c , int id, Newsletter n)
+        public IActionResult BlogDetail(Comment c , int id)
         {
-            n.MailStatus = true;
             c.CommentDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             c.CommentStatus = true;
             c.BlogId = id;
             cm.Add(c);
-            nm.Add(n);
             return RedirectToAction("BlogDetail", "Blog");
         }
         

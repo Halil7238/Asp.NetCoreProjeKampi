@@ -3,18 +3,28 @@
         <div class="row">
             <div class="col-lg-4 footer-grid-agileits-w3ls text-left">
                 <h3>Hakkımızda</h3>
-                <p>Blog herkes tarafından duyulan bir kelimedir. Web sitesi olarak bilinen bloglar, 
-                    alt sayfa olarak bilinen site türleri değildir.  Farklı makalelerin farklı konularda 
-                    ele alınmasıyla oluşan bir sitedir. Blog sitelerin en önemli özelliği, özellikle 
-                    içerikleri oluşturan yazarların yazdığı içerikleri birinci şahıs bakış açısıyla yazmasıdır. 
-                     Kendi fikri ve düşüncelerini katarak yazılan yazıların tümüdür...</p>
+                <p>
+                    Blog herkes tarafından duyulan bir kelimedir. Web sitesi olarak bilinen bloglar,
+                    alt sayfa olarak bilinen site türleri değildir.  Farklı makalelerin farklı konularda
+                    ele alınmasıyla oluşan bir sitedir. Blog sitelerin en önemli özelliği, özellikle
+                    içerikleri oluşturan yazarların yazdığı içerikleri birinci şahıs bakış açısıyla yazmasıdır.
+                    Kendi fikri ve düşüncelerini katarak yazılan yazıların tümüdür...
+                </p>
                 <div class="read">
                     <a href="single.html" class="btn btn-primary read-m">Devamını Oku</a>
                 </div>
             </div>
-            @await Html.PartialAsync("FooterLatestPost3Partial")
+            @await Component.InvokeAsync("Last3BlogFooter")
+           @* @await Html.PartialAsync("FooterLatestPost3Partial")*@
             <!-- subscribe -->
-           @await Html.PartialAsync("FooterNewsLetterPartial")
+            @* @await Html.PartialAsync("FooterNewsLetterPartial")*@
+            <div class="col-lg-4 footer-grid-agileits-w3ls text-left">
+                <div class="tech-btm">
+                    <h3 class="text-white">Mail Bültenine Abone Ol.</h3>
+                    @await Html.PartialAsync("~/Views/Newsletter/SubscribeMail.cshtml")
+                </div>
+            </div>
+
         </div>
         <!-- footer -->
         <div class="footer-cpy text-center">
@@ -51,8 +61,8 @@
             </div>
             <div class="w3layouts-agile-copyrightbottom">
                 <p>
-                    © @DateTime.Now.Year RehberGençlikKulübü . Tüm Hakları Saklıdır. | Design by Halil AK
-                   @* <a href="http://w3layouts.com/">W3layouts</a>*@
+                    Copyright © @DateTime.Now.Year RehberGençlikKulübü . Tüm Hakları Saklıdır. | Design by Halil AK
+                    @* <a href="http://w3layouts.com/">W3layouts</a>*@
                 </p>
 
             </div>

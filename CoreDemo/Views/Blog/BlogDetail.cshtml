@@ -76,7 +76,12 @@
                     <div class="tech-btm">
                         <img src="~/CoreBlogTema/images/banner1.jpg" class="img-fluid" alt="">
                     </div>
-                    @await Html.PartialAsync("~/Views/Newsletter/SubscribeMail.cshtml")
+
+                    <div class="tech-btm">
+                        <h3">Mail Bültenine Abone Ol.</h3>
+                        @await Html.PartialAsync("~/Views/Newsletter/SubscribeMail.cshtml")
+                    </div>
+                      
                     @* <div class="tech-btm">
                     <h4>Mail Bültenimize Abone Olun.</h4>
                     <p>Pellentesque dui, non felis. Maecenas male </p>*@
@@ -146,7 +151,7 @@
                 Mail: $("#form_email").val(),
 
             }
-            if ($("#form_email").val().length == 0 ) {
+            if ($("#form_email").val().length == 0) {
                 alert("Mail bültenine abone olmak için Email alanı doldurulmalıdır!");
                 return false;
             }

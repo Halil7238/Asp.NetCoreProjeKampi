@@ -21,11 +21,11 @@
                             <img src="@Model.AboutImage1" class="img-fluid" alt="">
                         </a>
                     </div>
-                   @* <h3>
-                        Amet consectetur adipisicing
+                    @* <h3>
+                    Amet consectetur adipisicing
                     </h3>*@
                     <p class="mt-4">
-                     @Model.AboutDetails1
+                        @Model.AboutDetails1
                     </p>
                     @*<a href="single.html" class="btn btn-primary read-m">Read More</a>*@
                 </div>
@@ -71,7 +71,12 @@
                     <div class="tech-btm">
                         <img src="~/CoreBlogTema/images/banner1.jpg" class="img-fluid" alt="">
                     </div>
-                    @await Html.PartialAsync("~/Views/Newsletter/SubscribeMail.cshtml")
+
+                    <div class="tech-btm">
+                        <h3">
+                            Mail Bültenine Abone Ol.</h3>
+                            @await Html.PartialAsync("~/Views/Newsletter/SubscribeMail.cshtml")
+                    </div>
                     @*  <div class="tech-btm">
                     <h4>Sign up to our newsletter</h4>
                     <p>Pellentesque dui, non felis. Maecenas male </p>
