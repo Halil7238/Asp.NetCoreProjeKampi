@@ -23,10 +23,30 @@ namespace BusinessLayer.Concrete
             _commentDal.Insert(comment);
         }
 
+        public void Delete(Comment t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Comment GetByID(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Comment> GetList(int id)
         {
 
             return _commentDal.GetListAll(x => x.BlogId == id);
+        }
+
+        public List<Comment> GetList()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void  Update(Comment t)
+        {
+            throw new NotImplementedException();
         }
     }
 }

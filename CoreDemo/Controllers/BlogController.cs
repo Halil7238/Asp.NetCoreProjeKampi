@@ -1,6 +1,8 @@
 ﻿using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -19,7 +21,7 @@ namespace CoreDemo.Controllers
         }
         //BlogReadAll
         [HttpGet]
-        public IActionResult BlogDetail(int id)
+        public IActionResult BlogDetail(int id)   
         {
             ViewBag.BlogId = id;
             var values = bm.GetBlogById(id);
@@ -34,6 +36,7 @@ namespace CoreDemo.Controllers
             cm.Add(c);
             return RedirectToAction("BlogDetail", "Blog");
         }
-        
+       
+
     }
 }

@@ -33,8 +33,12 @@ namespace BusinessLayer.Concrete
             var blog = _blogdal.GetListWithCategory().OrderByDescending(x => x.BlogCreadDate).ToList(); ;
             return blog;
         }
+        public List<Blog> GetListWithCategoryByWriterBM(int id)
+        {
+            return _blogdal.GetListWithCategoryByWriter(id).OrderByDescending(x => x.BlogCreadDate).ToList(); ;
+        }
 
-        public Blog GetById(int id)
+        public Blog GetByID(int id)
         {
             var blog = _blogdal.GetById(id);
             return blog;

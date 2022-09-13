@@ -22,5 +22,25 @@ namespace BusinessLayer.Concrete
         {
             _writerDal.Insert(writer);
         }
+
+        public void Delete(Writer t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Writer GetByID(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Writer> GetList()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void  Update(Writer t)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
