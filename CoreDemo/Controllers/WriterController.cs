@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using DataAccessLayer.Concrete;
 
 namespace CoreDemo.Controllers
 {
@@ -16,10 +17,15 @@ namespace CoreDemo.Controllers
     {
         BlogManager bm = new BlogManager(new EfBlogRepository());
         CategoryManager cm = new CategoryManager(new EfCategoryRepository());
+        Context c = new Context();
 
         public IActionResult Index()
         {
-            return View();
+            ViewBag.BlogCount = c.Blogs.Count();
+            ViewBag.BlogByWriterCount = c.Blogs.Where(x=>x.WriterId==1).Count();
+            ViewBag.CategoryCount = c.Categories.Count();
+            //var values = bm.GetList();
+            return View(/*values*/);
         }
         public IActionResult BlogListByWriter()
         {

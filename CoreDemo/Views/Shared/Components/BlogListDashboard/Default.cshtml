@@ -1,0 +1,54 @@
+﻿@model List<EntityLayer.Concrete.Blog>
+
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Son 10 Blog</h4>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Resim</th>
+                            <th> Başlık </th>@*
+                            <th> Durum </th>*@
+                            <th> Kategori </th>
+                            <th> Tarih </th>
+                            <th> İşlemler </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td><image src="@item.BlogThumbnailImage" style="border-radius:1px !important; width:5em !important; height:5em !important;"></image> </td>
+                                <td>@item.BlogTitle</td>
+                                @* <td>@item.BlogContent.Substring(0,item.BlogContent.Substring(0,30).LastIndexOf("")) ...</td>*@
+                               @* @if (item.BlogStatus == true)
+                                {
+                                    <td><label class="badge badge-success">Aktif</label></td>
+                                }
+                                else
+                                {
+                                    <td><label class="badge badge-danger">Pasif</label></td>
+                                }*@
+
+                                <td><label class="badge badge-gradient-success">@item.Category.CategroyName</label></td>
+
+                                <td>@(((DateTime)item.BlogCreadDate).ToString("dd-MMM-yyyy"))</td>
+                                <td>
+                                    <a class="text-white text-decoration-none" href="/Blog/BlogDetail/@item.BlogId">
+                                        <button type="button" class="btn btn btn-gradient-dark btn-icon-text">
+                                            Bloga Git <i class="mdi mdi-logout"></i>
+                                        </button>
+                                    </a>
+                                   
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

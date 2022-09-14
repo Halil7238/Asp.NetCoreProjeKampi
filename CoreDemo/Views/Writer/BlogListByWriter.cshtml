@@ -60,14 +60,14 @@
                                 @* <td>@item.BlogContent.Substring(0,item.BlogContent.Substring(0,30).LastIndexOf("")) ...</td>*@
                                 @if (item.BlogStatus == true)
                                 {
-                                    <td><label class="badge badge-success">Aktif</label></td>
+                                    <td><label class="badge badge-gradient-success">Aktif</label></td>
                                 }
                                 else
                                 {
-                                    <td><label class="badge badge-danger">Pasif</label></td>
+                                    <td><label class="badge badge-gradient-danger">Pasif</label></td>
                                 }
 
-                                <td><label class="badge badge-info">@item.Category.CategroyName</label></td>
+                                <td><label class="badge badge-gradient-info">@item.Category.CategroyName</label></td>
 
                                 <td>@(((DateTime)item.BlogCreadDate).ToString("dd-MMM-yyyy"))</td>
                                 <td>
